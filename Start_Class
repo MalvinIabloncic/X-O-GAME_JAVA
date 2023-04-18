@@ -1,0 +1,14 @@
+
+package proiect;
+import java.util.*;
+import proiect.Window;
+
+public class clasa_noua {
+	
+public static void main(String []args){
+
+Window GameWindow = new Window();
+	
+	
+}
+}
