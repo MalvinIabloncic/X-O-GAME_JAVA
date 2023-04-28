@@ -1,5 +1,10 @@
-package proiect;
+/*
+ * The window class, implements the window of the game
+  */
+
+package project;
 import java.awt.BorderLayout;
+
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,86 +13,80 @@ import java.util.*;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+
 
 public class Window implements ActionListener{
 
 	JFrame frame = new JFrame();
-	JButton StartButton= new JButton("Start Game");
-	JButton ExistButton= new JButton("Exit");
-	ImageIcon imageIcon = new ImageIcon("F:\\Game.png");
-	JLabel jLabel = new JLabel(imageIcon);
 	ImageIcon icon = new ImageIcon("F:\\Game.png");
-	JPanel menuPanel, gamePanel, cardsPanel;
+	JPanel menuPanel, cardsPanel;
     CardLayout cardLayout;
+    GamePanel gamePanel;
+    MenuPanel menuPanel1;
     
 	
-	
+	//------Window constructor-----------
 	Window(){
 		
-	
-		
-		////start panel
-		menuPanel = new JPanel();
-		menuPanel.setLayout(null);
-		menuPanel.setVisible(true);
-		menuPanel.add(StartButton);
-		menuPanel.add(ExistButton);
-		menuPanel.add(jLabel);
-		
-	
-	    ////game photo
-		jLabel.setBounds(100, 10, 200, 200);
-		
-		////start button
-		StartButton.setBounds(100,220,200,40);
-		StartButton.setFocusable(false);
-		StartButton.addActionListener(this);
-		////exit button
-		ExistButton.setBounds(100,270,200,40);
-		ExistButton.setFocusable(false);
-		ExistButton.addActionListener(this);
-		
-		////game panel
-		gamePanel = new JPanel();
-		gamePanel.setLayout(null);
+	    //--------panels and dialog window-------
+		menuPanel1= new MenuPanel(this);
+		gamePanel=new GamePanel(this);
 		
 		
-	    ////parent panel to hold the menu and game panels
+		
+		
+		
+		//------parent panel to hold the menu and game panels-------
         cardsPanel = new JPanel();
         cardLayout = new CardLayout();
         cardsPanel.setLayout(cardLayout);
-        cardsPanel.add(menuPanel, "Menu");
+        cardsPanel.add(menuPanel1, "Menu");
         cardsPanel.add(gamePanel, "Game");
+        
+  
+     
 		
-		
-		////frame
+		//---------frame-------
 		frame.setIconImage(icon.getImage());
-		frame.setLayout(new BorderLayout());
-		frame.setTitle("X/0");
+		frame.setTitle("X/O");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(420,420);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
+		frame.setLayout(new BorderLayout());
 		frame.getContentPane().add(cardsPanel, BorderLayout.CENTER);		
-		
+	
 
         
-        ///frame visibility
+        //--------frame visibility------
     	frame.setVisible(true);
+ 
+    	
 	}
+	
+	
+	
+	
+	//------- reset game function--------------
+	public void resetGamePanel() {
+		for (JButton button : gamePanel.buttons) {
+			button.setEnabled(true);
+			button.setText("");
+        }
+    }
+	
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		 if (e.getSource() == ExistButton) {
-	         
+		 if (e.getSource() == menuPanel1.ExistButton) {//exit button 
 			 frame.dispose();
-		 }
-		 else if (e.getSource() == StartButton) {
+		 }else if (e.getSource() == menuPanel1.StartButton) {//start game button
 			 cardLayout.show(cardsPanel, "Game");
 	            
-	        }
+		 }
 	}
 	
 	
