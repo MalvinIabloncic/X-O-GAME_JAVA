@@ -1,9 +1,9 @@
 
-package proiect;
+package project;
 import java.util.*;
-import proiect.Window;
+import project.Window;
 
-public class clasa_noua {
+public class StartGame {
 	
 public static void main(String []args){
 
