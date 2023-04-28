@@ -9,7 +9,7 @@
  
    The game pannel contains 9 buttons witch have which nothing written on them but after pressing one of them, it will disply either "X" or "O" each symbol representing   a player.
  
- The user is the "X" player and can make the first move and the computer is the "O" player.
+   The user is the "X" player and can make the first move and the computer is the "O" player.
  
    When the game ends, the user can either win, lose or if all the positions are already ocuppied but none of the players won, the game ends with a draw. After the game   is over a dialog window, with three buttons(Menu, Restart, Exit Game), pops up and the user can go back to the menu page, restart the game or exit the program.
  
