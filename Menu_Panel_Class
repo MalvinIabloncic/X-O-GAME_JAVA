@@ -2,9 +2,9 @@
  * The MenuPanel class implements the first page the user interacts with
  * The menu page contains two buttons, a Start game button that starts the game and a Exit button that closes the program  
 */
-package proiect;
+package project;
 
-import proiect.Window;
+import project.Window;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
