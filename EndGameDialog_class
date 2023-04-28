@@ -1,0 +1,100 @@
+/* 
+   * The EndGameDialog class creates a dialog window that pops up at the end of the game.
+   * The window contains the result of the game and three buttons(Menu,Restart,Exit Game)
+   * Each button does what his name says, the restart button restarts the game, the menu button redirects the user to the menu panel and the exit button quits the game  
+*/
+package project;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class EndGameDialog extends JDialog implements ActionListener{
+
+
+	JButton Restart= new JButton("Restart");
+	JButton Menu= new JButton("Menu");
+	JButton ExitGame= new JButton("Exit Game");
+	JPanel EndGamePanel = new JPanel(new BorderLayout());
+	JPanel buttonPanel = new JPanel();
+	JPanel TextPanel= new JPanel();
+	JLabel TextField = new JLabel();
+	Window window;
+	GamePanel gamepanel;
+	
+	
+	//-----EndGameDialog constructor-----
+	EndGameDialog(Window window,GamePanel gamepanel){
+		this.window=window;
+		
+		
+		//---text panel----
+		TextPanel.setBackground(Color.BLACK);
+		TextPanel.setPreferredSize(new Dimension(100,40));
+		TextPanel.add(TextField);
+		TextField.setAlignmentX(CENTER_ALIGNMENT);
+		TextField.setAlignmentY(CENTER_ALIGNMENT);
+		TextField.setFont(new Font("Arial", Font.BOLD, 20));
+		TextField.setForeground(Color.GREEN);
+		
+	
+		
+		
+		//-----button panel-----
+		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		buttonPanel.add(Restart);
+		buttonPanel.add(Menu);
+		buttonPanel.add(ExitGame);
+		buttonPanel.setPreferredSize(new Dimension(40,40));
+		buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 60, 10, 60));
+		
+		
+		//--- action listeners for buttons-----
+		Menu.addActionListener(this);
+		Restart.addActionListener(this);
+		ExitGame.addActionListener(this);
+		
+		
+		//---- the dialog window-----
+	    setSize(220,220);
+		setLayout(new BorderLayout());
+		add(TextPanel, BorderLayout.NORTH);
+		add(buttonPanel, BorderLayout.CENTER);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		setTitle("Game Over...");	
+		setResizable(false);
+		
+
+	}
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		  if (e.getSource() == Menu) {//menu button
+			  window.resetGamePanel();
+			  window.cardLayout.show(window.cardsPanel, "Menu");
+	          setVisible(false);
+	      }else if(e.getSource() == Restart){//restart button
+	    	  window.resetGamePanel();
+	    	  window.cardLayout.show(window.cardsPanel, "Game");
+	          setVisible(false);
+	    	  
+          }else if(e.getSource() == ExitGame){//exit button
+        	  setVisible(false);
+        	  window.frame.dispose();
+	      }
+		
+	}
+
+}
