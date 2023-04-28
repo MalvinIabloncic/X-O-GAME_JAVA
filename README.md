@@ -11,7 +11,7 @@
  
  The user is the "X" player and can make the first move and the computer is the "O" player.
  
-    When the game ends, the user can either win, lose or if all the positions are already ocuppied but none of the players won, the game ends with a draw. After the game   is over a dialog window, with three buttons(Menu, Restart, Exit Game), pops up and the user can go back to the menu page, restart the game or exit the program.
+   When the game ends, the user can either win, lose or if all the positions are already ocuppied but none of the players won, the game ends with a draw. After the game   is over a dialog window, with three buttons(Menu, Restart, Exit Game), pops up and the user can go back to the menu page, restart the game or exit the program.
  
  
 * WHO IS THE COMPUTER PLAYER?
